@@ -23,7 +23,7 @@ const TenantProvider = (props) => {
     if (!tenant) {
       return;
     }
-    fetch(process.env.REACT_APP_TENANT_API + "api.php/tenant", {
+    fetch(combineUrlAndPath(process.env.REACT_APP_TENANT_API, "api.php/tenant"), {
       headers: { "Content-Type": "application/json", APP_ID: tenant },
     })
       .then((res) => res.json())
@@ -39,7 +39,7 @@ const TenantProvider = (props) => {
           onError("Tenant: Unable to fetch Tenant details", err);
         }
       });
-    fetch(process.env.REACT_APP_TENANT_API + "getsettings.php", {
+    fetch(combineUrlAndPath(process.env.REACT_APP_TENANT_API, "getsettings.php"), {
       headers: { "Content-Type": "application/json", APP_ID: tenant },
     })
       .then((res) => res.json())
